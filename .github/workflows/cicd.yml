@@ -13,8 +13,9 @@
   WCS_TASK_DEFINITION_API: cicd-section/.aws/task-def-api.json 
 
  permissions:
-
-
+    id-token: write
+    contents: read
+    
  jobs:
  #Test/Build
   test-and-build:
