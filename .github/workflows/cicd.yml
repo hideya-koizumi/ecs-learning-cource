@@ -1,8 +1,26 @@
- name: Hello GitHub Actions
- on: push
+ name: Web API Deploy Pipeline
+ on: 
+  push:
+    paths:
+      - 'cicd-section.api/**'
+
+ env:
+  AWS_REGION: ap-northeast-1
+  WCS_CLUSTER:  my-app-cluster
+  WCS_SERVICE:  my-app-api-service
+  WCS_REPOSITORY: my-app-api
+  WCS_TASK_DEFINITION_API: cicd-section/.aws/task-def-api.json 
 
  jobs:
-  hello-job:
+ #Test/Build
+  test-and-build:
+    runs-on: ubuntu-latest
+    default:
+      run:
+        working-directory: cicd-section/api
+
+ #Deploy 
+  :
     runs-on: ubuntu-latest
     steps:
       - run: echo "Hello"
